@@ -91,28 +91,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <!-- Deploy a "-javadoc.jar" along with build -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.3</version>
-                <configuration>
-                    <!--
-                        This is a workaround for javadoc bug in JDK11/12
-                        See: https://bugs.openjdk.java.net/browse/JDK-8212233
-                    -->
-                    <source>8</source>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>javadoc-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <!--
                     Build a jar containing all dependencies, by copying classes from all dependency jars directly into
                     the main jar.
@@ -413,17 +391,6 @@
             <activation>
                 <jdk>[1.8,)</jdk>
             </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <configuration>
-                            <additionalparam>-Xdoclint:none</additionalparam>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
         </profile>
     </profiles>
 </project>

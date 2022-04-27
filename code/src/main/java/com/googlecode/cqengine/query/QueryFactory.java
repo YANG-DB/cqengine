@@ -368,6 +368,10 @@ public class QueryFactory {
         return new And<O>(queries);
     }
 
+      public static And traverse(Query ... queries) {
+          return new And(Arrays.asList(queries));
+    }
+
     /**
      * Creates an {@link And} query, representing a logical AND on child queries, which when evaluated yields the
      * <u>set intersection</u> of the result sets from child queries.

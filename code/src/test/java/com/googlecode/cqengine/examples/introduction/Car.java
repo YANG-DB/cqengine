@@ -1,12 +1,12 @@
 /**
  * Copyright 2012-2015 Niall Gallagher
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,6 +18,8 @@ package com.googlecode.cqengine.examples.introduction;
 import com.googlecode.cqengine.attribute.Attribute;
 import com.googlecode.cqengine.attribute.MultiValueAttribute;
 import com.googlecode.cqengine.attribute.SimpleAttribute;
+import com.googlecode.cqengine.metadata.PrimaryKeyedEntity;
+import com.googlecode.cqengine.metadata.PrimaryKeyedMetadata;
 import com.googlecode.cqengine.query.option.QueryOptions;
 
 import java.util.List;
@@ -25,7 +27,7 @@ import java.util.List;
 /**
  * @author Niall Gallagher
  */
-public class Car {
+public class Car implements PrimaryKeyedEntity< Integer>, PrimaryKeyedMetadata<Car, Integer> {
     public final int carId;
     public final String name;
     public final String description;
@@ -45,18 +47,36 @@ public class Car {
 
     // -------------------------- Attributes --------------------------
     public static final Attribute<Car, Integer> CAR_ID = new SimpleAttribute<Car, Integer>("carId") {
-        public Integer getValue(Car car, QueryOptions queryOptions) { return car.carId; }
+        public Integer getValue(Car car, QueryOptions queryOptions) {
+            return car.carId;
+        }
     };
 
     public static final Attribute<Car, String> NAME = new SimpleAttribute<Car, String>("name") {
-        public String getValue(Car car, QueryOptions queryOptions) { return car.name; }
+        public String getValue(Car car, QueryOptions queryOptions) {
+            return car.name;
+        }
     };
 
     public static final Attribute<Car, String> DESCRIPTION = new SimpleAttribute<Car, String>("description") {
-        public String getValue(Car car, QueryOptions queryOptions) { return car.description; }
+        public String getValue(Car car, QueryOptions queryOptions) {
+            return car.description;
+        }
     };
 
     public static final Attribute<Car, String> FEATURES = new MultiValueAttribute<Car, String>("features") {
-        public List<String> getValues(Car car, QueryOptions queryOptions) { return car.features; }
+        public List<String> getValues(Car car, QueryOptions queryOptions) {
+            return car.features;
+        }
     };
+
+    @Override
+    public Integer getKey() {
+        return this.carId;
+    }
+
+    @Override
+    public Attribute<Car, Integer> getPKAttribute() {
+        return CAR_ID;
+    }
 }

@@ -18,7 +18,7 @@ package com.googlecode.cqengine.query.simple;
 import com.googlecode.cqengine.ConcurrentIndexedCollection;
 import com.googlecode.cqengine.IndexedCollection;
 import com.googlecode.cqengine.examples.introduction.Car;
-import com.googlecode.cqengine.examples.join.Garage;
+import com.googlecode.cqengine.examples.introduction.Garage;
 import com.googlecode.cqengine.query.Query;
 import org.junit.Assert;
 import org.junit.Test;

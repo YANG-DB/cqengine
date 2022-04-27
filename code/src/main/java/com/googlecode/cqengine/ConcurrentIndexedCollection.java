@@ -15,8 +15,8 @@
  */
 package com.googlecode.cqengine;
 
-import com.googlecode.cqengine.engine.QueryEngineInternal;
 import com.googlecode.cqengine.engine.CollectionQueryEngine;
+import com.googlecode.cqengine.engine.QueryEngineInternal;
 import com.googlecode.cqengine.index.Index;
 import com.googlecode.cqengine.index.support.CloseableIterator;
 import com.googlecode.cqengine.index.support.CloseableRequestResources;
@@ -33,9 +33,10 @@ import com.googlecode.cqengine.query.option.QueryOptions;
 import com.googlecode.cqengine.resultset.ResultSet;
 import com.googlecode.cqengine.resultset.closeable.CloseableResultSet;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
 
-import static com.googlecode.cqengine.query.QueryFactory.queryOptions;
 import static java.util.Collections.singleton;
 
 /**

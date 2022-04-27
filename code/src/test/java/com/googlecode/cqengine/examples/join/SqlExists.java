@@ -18,6 +18,7 @@ package com.googlecode.cqengine.examples.join;
 import com.googlecode.cqengine.ConcurrentIndexedCollection;
 import com.googlecode.cqengine.IndexedCollection;
 import com.googlecode.cqengine.examples.introduction.Car;
+import com.googlecode.cqengine.examples.introduction.Garage;
 import com.googlecode.cqengine.query.Query;
 import static com.googlecode.cqengine.query.QueryFactory.*;
 import static java.util.Arrays.asList;

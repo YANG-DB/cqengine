@@ -13,11 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.googlecode.cqengine.examples.join;
+package com.googlecode.cqengine.examples.introduction;
 
 import com.googlecode.cqengine.attribute.Attribute;
 import com.googlecode.cqengine.attribute.MultiValueAttribute;
 import com.googlecode.cqengine.attribute.SimpleAttribute;
+import com.googlecode.cqengine.metadata.PrimaryKeyedEntity;
+import com.googlecode.cqengine.metadata.PrimaryKeyedMetadata;
 import com.googlecode.cqengine.query.option.QueryOptions;
 
 import java.util.List;
@@ -25,7 +27,7 @@ import java.util.List;
 /**
  * @author Niall Gallagher
  */
-public class Garage {
+public class Garage implements PrimaryKeyedEntity<Integer>, PrimaryKeyedMetadata<Garage,Integer> {
 
     public final int garageId;
     public final String name;
@@ -61,4 +63,14 @@ public class Garage {
     public static final Attribute<Garage, String> BRANDS_SERVICED = new MultiValueAttribute<Garage, String>("brandsServiced") {
         public List<String> getValues(Garage garage, QueryOptions queryOptions) { return garage.brandsServiced; }
     };
+
+    @Override
+    public Integer getKey() {
+        return this.garageId;
+    }
+
+    @Override
+    public Attribute<Garage, Integer> getPKAttribute() {
+        return GARAGE_ID;
+    }
 }
